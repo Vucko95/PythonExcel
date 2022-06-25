@@ -1,6 +1,7 @@
 import cv2
-
+import os
 # print(image.shape)
+images = os.listdir('imgs')
 
 
 def calculate_size(scale_percentage, width, height):
@@ -15,5 +16,9 @@ def resize(image_path, scale_percentage, resized_path):
     resized_image = cv2.resize(image, new_dim)
     cv2.imwrite(resized_path, resized_image)
 
+# one Only
+# resize('bear.jpeg', 10, 'resized-bear.jpeg')
 
-resize('./imgs/bear.jpeg', 10, 'resized-bear.jpeg')
+
+for image in images:
+    resize(f'./imgs/{image}', 10, f'resized-{image}.jpeg')
